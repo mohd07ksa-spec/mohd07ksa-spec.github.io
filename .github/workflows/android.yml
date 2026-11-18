@@ -18,11 +18,15 @@ jobs:
         working-directory: android
         run: gradle assembleDebug --no-daemon
       - name: Rename
-        run: cp android/app/build/outputs/apk/debug/app-debug.apk academy.apk
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk academy.apk
+          cp android/online/build/outputs/apk/debug/online-debug.apk academy-online.apk
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: app-v${{ github.run_number }}
           name: الأكاديمية ${{ github.run_number }}
-          files: academy.apk
+          files: |
+            academy.apk
+            academy-online.apk
           make_latest: true
