@@ -21,6 +21,7 @@ jobs:
         run: |
           cp android/app/build/outputs/apk/debug/app-debug.apk academy.apk
           cp android/online/build/outputs/apk/debug/online-debug.apk academy-online.apk
+          cp android/analyzer/build/outputs/apk/debug/analyzer-debug.apk aqar-analyzer.apk
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
@@ -29,4 +30,5 @@ jobs:
           files: |
             academy.apk
             academy-online.apk
+            aqar-analyzer.apk
           make_latest: true
